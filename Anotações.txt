@@ -1,0 +1,5 @@
+- RabbitMQ rodando no docker
+- Docker rodando no WSL
+
+- Publisher -> aplicação que irá escrever na fila
+- Subscriber -> aplicação que irá consumir na fila
