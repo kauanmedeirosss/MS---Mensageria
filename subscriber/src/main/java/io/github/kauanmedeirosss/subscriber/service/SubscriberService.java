@@ -9,7 +9,7 @@ public class SubscriberService {
 
     @RabbitListener(queues = "${rabbitmq.queuename}")
     public void recebeMensagem(Message mensagem){
-        System.out.println(mensagem);
+        System.out.println(new String(mensagem.getBody()));
     }
 
 }
