@@ -22,4 +22,10 @@ public class Publisher {
         publisherService.publicaMensagemTexto(texto, nomeFila);
     }
 
+    @PostMapping("publish/json")
+    public void publicaJson(@RequestBody String texto){
+        System.out.println("Enviando mensagem: " + texto);
+        publisherService.publicaMensagemJson(texto, nomeFila);
+    }
+
 }
