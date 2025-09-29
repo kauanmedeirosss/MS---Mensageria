@@ -54,3 +54,12 @@ Aplicação que irá consumir na fila.
 * Click no nome meuusuario, em seguida `Set permission` sem modificar nada
 * Em seguida fazemos aquele mesmo processo de criar uma fila com o mesmo nome que está nas nossas properties
 * Agora rodamos nossas duas aplicações e testamos o envio de requisições
+
+### 5 commit
+* No Subscriber, iremos fazer uma classe de configuração própria do RabbitMQ para testar outra forma de definir suas propriedades
+  * seu caminho é `src/main/.../config/RabbitMQConfig`
+  * ela possui atributos contendo suas informações e métodos, um para definir parâmetros de conexão e outra para ler mensagens da fila
+* No Subscriber, foi feito também uma alteração no service para adicionar o método de leitura de mensagens recém criado ao nosso método de leitura
+* No Publisher, também foi feita uma classe de configuração
+  * seu caminho é `src/main/.../config/RabbitMQConfig` (mesmo do subscriber)
+  * ela possui atributos contendo suas informações e apenas o método para definir parâmetros de conexão
