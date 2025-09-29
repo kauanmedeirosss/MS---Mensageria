@@ -1,6 +1,10 @@
 ## Observações:
 * RabbitMQ rodando no docker
+  - tutorial para instalar docker:
+  - https://youtu.be/2RhwwUllgi8?si=7lXKPZ4Tkoo-tEJT
 * Docker rodando no WSL
+  - tutorial para instalar WSL (Linux no Windows):
+  - https://youtu.be/g_KedbL9p94?si=2o0TuohcRvfBvQG1
 
 ## Estrutura:
 ### Publisher
@@ -78,3 +82,15 @@ Aplicação que irá consumir na fila.
 * OBS: foi enviada no teste a mensagem json:
   - {\"key1\":\"value1\", \"key2\":\"value2\"}
 * OBS: SEMPRE MANDAR NOS ENDPOINTS CERTOS, texto em texto e json em json, ou a aplicação irá quebrar em loop  
+
+### 7 commit
+#### Mudanças no código:
+* Agora iremos consertar o problema do loop infinito ao ler formato errado da requisição
+* Iremos definir quantas vezes ele irá tentar ler essa mensagem e, como ultima ação caso não consiga ler, colocar numa fila de backout
+* Iremos também configurar a aplicação para criar a fila no RabbitMQ automaticamente sem precisar criar na interface do serviço
+  * para excluir a fila existente é só clicar no nome dela e procurar a opção `delete queue`
+* OBS: na Subscriber, na config, na linha 90, temos:
+  * .recoverer((MethodInvocationRecoverer<?>) recoverer)
+  * que deveria ser:
+  * .recoverer(recoverer)
+  * observar se erros vêm daqui
